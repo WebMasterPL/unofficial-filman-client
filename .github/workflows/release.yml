@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   update-version:
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+    if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/'))
     name: Update Version Number
     runs-on: ubuntu-latest
 
